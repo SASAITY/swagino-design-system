@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Деревня SWAGИНО — Design System</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --paper: #f7f7f4;
+      --black: #08080a;
+      --soft-black: #111114;
+      --gray: #8e8e93;
+      --light-gray: #ececef;
+      --silver: #c8cbd1;
+      --hot-pink: #ff2a9d;
+      --pink-soft: #ffd7ef;
+      --cyan: #61f2ff;
+      --acid-green: #91ff9f;
+      --violet: #9b6bff;
+      --holo: linear-gradient(110deg, #ff2a9d 0%, #9b6bff 32%, #61f2ff 62%, #91ff9f 100%);
+      --radius-xl: 38px;
+      --radius-md: 22px;
+      --slide-w: 1280px;
+      --slide-h: 720px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--black);
+      font-family: Inter, Helvetica, Arial, sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .page {
+      width: min(1440px, 100%);
+      margin: 0 auto;
+      padding: 64px 40px 120px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 72px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--gray);
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      max-width: 1100px;
+      font-size: clamp(72px, 11vw, 168px);
+      line-height: .82;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(42px, 6vw, 92px);
+      line-height: .88;
+      font-weight: 900;
+      letter-spacing: -0.065em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      margin: 0;
+      max-width: 760px;
+      font-size: 24px;
+      line-height: 1.18;
+      color: #515158;
+      letter-spacing: -0.035em;
+    }
+
+    .accent { color: var(--hot-pink); }
+    .muted { color: var(--gray); }
+    .holo-text {
+      background: var(--holo);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      margin-top: 96px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,.09);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      min-height: 150px;
+    }
+
+    .swatch {
+      height: 120px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(0,0,0,.08);
+      margin-bottom: 14px;
+    }
+
+    .holo-swatch { background: var(--holo); }
+    .pink { background: var(--hot-pink); }
+    .black { background: var(--black); }
+    .silver { background: linear-gradient(130deg, #f8f8f8, #9ea2aa, #f1f1f1); }
+    .white { background: var(--white); }
+    .cyan { background: var(--cyan); }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      border: 1px solid rgba(0,0,0,.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      margin: 0 8px 8px 0;
+    }
+
+    .rule {
+      height: 1px;
+      background: rgba(0,0,0,.12);
+      margin: 48px 0;
+    }
+
+    .slide-wrap {
+      margin: 42px 0 88px;
+    }
+
+    .slide-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 16px;
+      color: var(--gray);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .slide {
+      width: var(--slide-w);
+      height: var(--slide-h);
+      background: var(--white);
+      border-radius: 28px;
+      border: 1px solid rgba(0,0,0,.12);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 24px 70px rgba(0,0,0,.08);
+    }
+
+    .slide.dark {
+      background: #050506;
+      color: white;
+    }
+
+    .slide .kicker {
+      position: absolute;
+      top: 54px;
+      left: 64px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-weight: 800;
+      color: var(--hot-pink);
+    }
+
+    .slide .big {
+      position: absolute;
+      left: 60px;
+      top: 96px;
+      width: 720px;
+      font-size: 98px;
+      line-height: .84;
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      z-index: 2;
+    }
+
+    .slide .small {
+      position: absolute;
+      left: 64px;
+      bottom: 64px;
+      width: 520px;
+      font-size: 22px;
+      line-height: 1.12;
+      color: #5c5c63;
+      letter-spacing: -0.035em;
+      z-index: 2;
+    }
+
+    .slide.dark .small { color: rgba(255,255,255,.66); }
+    .slide.dark .big { color: white; }
+
+    .hero-img {
+      position: absolute;
+      object-fit: cover;
+      border-radius: 28px;
+      filter: contrast(1.03) saturate(1.04);
+    }
+
+    .object-img {
+      position: absolute;
+      object-fit: contain;
+      filter: drop-shadow(0 22px 45px rgba(0,0,0,.16));
+    }
+
+    .grain-word {
+      position: absolute;
+      right: 40px;
+      top: 36px;
+      font-size: 168px;
+      line-height: .8;
+      font-weight: 900;
+      letter-spacing: -0.09em;
+      opacity: .08;
+      filter: blur(1px);
+      z-index: 0;
+    }
+
+    .holo-line {
+      position: absolute;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--holo);
+    }
+
+    .label {
+      position: absolute;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.74);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0,0,0,.08);
+      font-size: 15px;
+      font-weight: 800;
+      color: rgba(0,0,0,.62);
+      z-index: 4;
+    }
+
+    .map-line {
+      position: absolute;
+      height: 2px;
+      background: rgba(0,0,0,.16);
+      transform-origin: left center;
+    }
+
+    .map-point {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      background: var(--hot-pink);
+      border-radius: 50%;
+      box-shadow: 0 0 0 10px rgba(255,42,157,.1);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+
+    .info-list {
+      position: absolute;
+      right: 60px;
+      top: 155px;
+      width: 440px;
+      display: grid;
+      gap: 22px;
+    }
+
+    .info-item {
+      border-top: 1px solid rgba(0,0,0,.12);
+      padding-top: 16px;
+      font-size: 22px;
+      line-height: 1.05;
+      font-weight: 800;
+    }
+
+    .info-item span {
+      display: block;
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.12;
+      font-weight: 600;
+      color: var(--gray);
+      letter-spacing: -0.02em;
+    }
+
+    .quote {
+      position: absolute;
+      left: 70px;
+      top: 150px;
+      width: 940px;
+      font-size: 86px;
+      line-height: .92;
+      font-weight: 900;
+      letter-spacing: -0.075em;
+    }
+
+    .footer-mini {
+      position: absolute;
+      left: 64px;
+      bottom: 34px;
+      right: 64px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(0,0,0,.14);
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: rgba(0,0,0,.42);
+    }
+
+    .dark .footer-mini {
+      border-color: rgba(255,255,255,.2);
+      color: rgba(255,255,255,.45);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,.1);
+    }
+
+    .note {
+      background: #fff;
+      border-left: 5px solid var(--hot-pink);
+      padding: 24px 28px;
+      border-radius: 18px;
+      margin-top: 28px;
+      color: #4f4f55;
+      font-size: 20px;
+      line-height: 1.22;
+      max-width: 900px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topbar">
+      <span>SWAGИНО / DESIGN SYSTEM</span>
+      <span>Burning Man camp proposal / 2026</span>
+    </div>
+
+    <h1>ДЕРЕВНЯ <span class="holo-text">SWAGИНО</span></h1>
+    <p>Дизайн-система для презентации: белый editorial deck, огромная типографика, CD как музыкальный артефакт, hot pink glam, серебро, голография и ностальгия 2000-х без фестивального визуального мусора.</p>
+
+    <section class="section">
+      <h2>01. Основа вайба</h2>
+      <div>
+        <span class="tag">Miu Miu × MTV 2005</span>
+        <span class="tag">Burning Man</span>
+        <span class="tag">Y2K Glam</span>
+        <span class="tag">Graffiti culture</span>
+        <span class="tag">CD nostalgia</span>
+        <span class="tag">Art catalogue 2026</span>
+      </div>
+      <div class="note">Правило: белый фон 80-90%, один главный объект на слайд, минимум текста, розовый только как акцент. CD не как узор на весь фон, а как символ музыки, памяти и перелива.</div>
+    </section>
+
+    <section class="section">
+      <h2>02. Цвета</h2>
+      <div class="grid grid-4">
+        <div class="card"><div class="swatch white"></div><h3>White</h3><p>#FFFFFF</p></div>
+        <div class="card"><div class="swatch black"></div><h3>Black</h3><p>#08080A</p></div>
+        <div class="card"><div class="swatch pink"></div><h3>Hot Pink</h3><p>#FF2A9D</p></div>
+        <div class="card"><div class="swatch silver"></div><h3>Silver</h3><p>Chrome gradient</p></div>
+        <div class="card"><div class="swatch holo-swatch"></div><h3>Holographic</h3><p>Pink / Violet / Cyan / Green</p></div>
+        <div class="card"><div class="swatch cyan"></div><h3>Cyan flash</h3><p>#61F2FF</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>03. Типографика</h2>
+      <div class="card">
+        <div style="font-size:112px;font-weight:900;line-height:.82;letter-spacing:-.08em;">SWAGИНО<br>ЖИВА</div>
+        <div class="rule"></div>
+        <p>Заголовки: Inter Extra Bold / 90–160 px / очень плотный трекинг. Текст: Inter Medium / 22–34 px. Подписи: uppercase, 13–16 px.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>04. Шаблоны слайдов</h2>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 01</span><span>Cover / hero object</span></div>
+        <div class="slide">
+          <div class="grain-word">SWAG</div>
+          <div class="kicker">BURNING MAN CAMP / 2026</div>
+          <div class="big">ДЕРЕВНЯ<br>SWAGИНО</div>
+          <div class="small">Мы бережно охраняем тёплую ностальгию 2000-х.</div>
+          <img class="object-img" src="assets/ref_19.jpeg" alt="cd">
+          <style>
+            .slide-wrap:nth-of-type(1) .object-img { width: 520px; height: 520px; right: 80px; top: 92px; }
+          </style>
+          <div class="holo-line" style="left:64px; bottom:124px; width:420px;"></div>
+          <div class="label" style="right:95px; top:90px;">CD MEMORY</div>
+          <div class="footer-mini"><span>SWAGИНО</span><span>01</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 02</span><span>Concept / fashion moodboard</span></div>
+        <div class="slide">
+          <div class="kicker">01 / КОНЦЕПЦИЯ</div>
+          <div class="big">НЕ РЕТРО.<br>ЖИВАЯ<br>МИФОЛОГИЯ.</div>
+          <div class="small">Музыка, граффити, VHS, CD и дворовая культура превращаются в пространство участия.</div>
+          <img class="hero-img" src="assets/ref_14.png" alt="pink graffiti">
+          <img class="hero-img" src="assets/ref_16.jpeg" alt="cd">
+          <style>
+            .slide-wrap:nth-of-type(2) .hero-img:nth-of-type(1) { right: 78px; top: 80px; width: 400px; height: 400px; }
+            .slide-wrap:nth-of-type(2) .hero-img:nth-of-type(2) { right: 220px; bottom: 78px; width: 340px; height: 260px; }
+          </style>
+          <div class="label" style="right:330px; top:120px;">Y2K GLAM</div>
+          <div class="footer-mini"><span>Concept</span><span>02</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 03</span><span>Guest journey</span></div>
+        <div class="slide">
+          <div class="kicker">02 / ПУТЬ ГОСТЯ</div>
+          <div class="big">ЛЕС →<br>КАЛИТКА →<br>ТОТЕМ</div>
+          <div class="small">Гость слышит гул саба, видит CD на деревьях и выходит на поляну, где стоит человек из колонок.</div>
+          <div class="map-point" style="left:830px;top:240px;"></div>
+          <div class="map-point" style="left:1030px;top:360px;"></div>
+          <div class="map-point" style="left:1230px;top:480px;"></div>
+          <div class="map-line" style="left:844px;top:250px;width:230px;transform:rotate(31deg);"></div>
+          <div class="map-line" style="left:1044px;top:370px;width:230px;transform:rotate(31deg);"></div>
+          <div class="label" style="left:800px;top:190px;">FOREST</div>
+          <div class="label" style="left:1000px;top:310px;">GATE</div>
+          <div class="label" style="left:1200px;top:430px;">ALTAR</div>
+          <img class="object-img" src="assets/ref_07.jpg" alt="led tree">
+          <style>
+            .slide-wrap:nth-of-type(3) .object-img { right: 70px; top: 80px; width: 420px; height: 560px; opacity:.86; border-radius:34px; object-fit:cover; }
+          </style>
+          <div class="footer-mini"><span>Guest journey</span><span>03</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 04</span><span>Space / architectural plan</span></div>
+        <div class="slide">
+          <div class="kicker">03 / ПРОСТРАНСТВО</div>
+          <div class="big">КЭМП КАК<br>ДВОР<br>БУДУЩЕГО</div>
+          <div class="info-list">
+            <div class="info-item">Тотем из колонок<span>центр танцпола и главный арт-объект</span></div>
+            <div class="info-item">DJ-алтарь из ТВ<span>VHS, клипы детства, граффити-видео</span></div>
+            <div class="info-item">Граффити-забор<span>чилл, body art, дневные активности</span></div>
+            <div class="info-item">Бар из контейнеров<span>ирония деревни и гламур нулевых</span></div>
+          </div>
+          <div class="footer-mini"><span>Space</span><span>04</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 05</span><span>Day program</span></div>
+        <div class="slide">
+          <img class="hero-img" src="assets/ref_03.jpg" alt="graffiti">
+          <style>
+            .slide-wrap:nth-of-type(5) .hero-img { left: 58px; top: 58px; width: 545px; height: 604px; }
+          </style>
+          <div class="kicker" style="left:650px;">04 / ДЕНЬ</div>
+          <div class="big" style="left:650px;width:560px;">ДВОР,<br>ГДЕ ИНТЕРНЕТ<br>СТАЛ ЖИВЫМ</div>
+          <div class="info-list" style="right:72px;top:350px;">
+            <div class="info-item">16:20 дискотека<span>R&B, hip-hop, trance, ATB, Tiësto</span></div>
+            <div class="info-item">Граффити + body art<span>бар, фотозона-забор, живое рисование</span></div>
+            <div class="info-item">Лекция о сваге<span>каждый объясняет свою версию</span></div>
+          </div>
+          <div class="footer-mini"><span>Day</span><span>05</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 06</span><span>Night ritual / black accent slide</span></div>
+        <div class="slide dark">
+          <img class="hero-img" src="assets/ref_06.jpg" alt="neon tree">
+          <style>
+            .slide-wrap:nth-of-type(6) .hero-img { right: 0; top: 0; width: 620px; height: 720px; border-radius:0; opacity:.82; }
+          </style>
+          <div class="kicker">05 / НОЧЬ</div>
+          <div class="big">РИТУАЛЫ<br>ЗВУКА</div>
+          <div class="small">Басстерапия. Шумоисцеление. Open mic до рассвета. Музыка как коллективная психотерапия, да, цивилизация дошла до этого через сабвуфер.</div>
+          <div class="holo-line" style="left:64px; bottom:140px; width:480px;"></div>
+          <div class="footer-mini"><span>Night rituals</span><span>06</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 07</span><span>Media altar</span></div>
+        <div class="slide">
+          <div class="kicker">06 / МЕДИА-АЛТАРЬ</div>
+          <div class="big">ТЕЛЕВИЗОРЫ.<br>VHS.<br>КЛИПЫ<br>ИЗ ДЕТСТВА.</div>
+          <div class="small">Днём — камера транслирует людей на старые телеки. Ночью — клипы, фильмы, граффити-видео и культурный шум 2000-х.</div>
+          <div style="position:absolute;right:80px;top:116px;width:470px;height:470px;border:1px solid rgba(0,0,0,.12);border-radius:34px;display:grid;grid-template-columns:repeat(2,1fr);gap:10px;padding:16px;">
+            <div style="background:#0b0b0d;border-radius:18px;"></div>
+            <div style="background:var(--holo);border-radius:18px;"></div>
+            <div style="background:var(--holo);border-radius:18px;"></div>
+            <div style="background:#0b0b0d;border-radius:18px;"></div>
+          </div>
+          <div class="footer-mini"><span>Media altar</span><span>07</span></div>
+        </div>
+      </div>
+
+      <div class="slide-wrap">
+        <div class="slide-title-row"><span>Slide 08</span><span>Final quote</span></div>
+        <div class="slide">
+          <div class="quote">КАЖДЫЙ ИЗ НАС ОБЛАДАЕТ СВОЕЙ УДИВИТЕЛЬНОЙ СВАГОЙ.</div>
+          <img class="object-img" src="assets/ref_18.jpeg" alt="cd">
+          <style>
+            .slide-wrap:nth-of-type(8) .object-img { right: 110px; bottom: 78px; width: 360px; height: 360px; }
+          </style>
+          <div class="label" style="left:76px;top:76px;">FINAL MANIFESTO</div>
+          <div class="footer-mini"><span>Philosophy</span><span>08</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>05. Референсы</h2>
+      <div class="gallery">
+        <img src="assets/ref_01.jpg" alt="reference 1"><img src="assets/ref_02.jpg" alt="reference 2"><img src="assets/ref_03.jpg" alt="reference 3"><img src="assets/ref_04.jpg" alt="reference 4"><img src="assets/ref_05.jpg" alt="reference 5"><img src="assets/ref_06.jpg" alt="reference 6"><img src="assets/ref_07.jpg" alt="reference 7"><img src="assets/ref_08.jpg" alt="reference 8"><img src="assets/ref_09.jpeg" alt="reference 9"><img src="assets/ref_10.jpeg" alt="reference 10"><img src="assets/ref_11.png" alt="reference 11"><img src="assets/ref_12.png" alt="reference 12"><img src="assets/ref_13.png" alt="reference 13"><img src="assets/ref_14.png" alt="reference 14"><img src="assets/ref_15.png" alt="reference 15"><img src="assets/ref_16.jpeg" alt="reference 16"><img src="assets/ref_17.jpeg" alt="reference 17"><img src="assets/ref_18.jpeg" alt="reference 18"><img src="assets/ref_19.jpeg" alt="reference 19"><img src="assets/ref_20.png" alt="reference 20"><img src="assets/ref_21.png" alt="reference 21"><img src="assets/ref_22.jpeg" alt="reference 22"><img src="assets/ref_23.jpeg" alt="reference 23">
+      </div>
+    </section>
+  </main>
+</body>
+</html>
